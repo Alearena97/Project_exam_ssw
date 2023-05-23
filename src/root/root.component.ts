@@ -27,5 +27,10 @@ export class RootComponent implements OnInit {
   openIns() {
     this.buttonIns = !this.buttonIns;
   }
+
+  buttonRic: boolean = false;
+  openRic() {
+    this.buttonRic = !this.buttonRic;
+  }
   ngOnInit() {}
 }
