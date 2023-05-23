@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { ajax, AjaxResponse } from 'rxjs/ajax';
+import { Documento } from './documento';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +23,7 @@ export class BibliotecaService {
     });  
 
 }
-//cambiare parametro
-setDocument(documento:string): Observable<AjaxResponse<any>> {
+setDocument(documento:Documento): Observable<AjaxResponse<any>> {
   return ajax({
     method: 'POST',
     url: this.myURL+"set?key="+this.apiKey,
