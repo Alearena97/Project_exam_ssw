@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { BibliotecaService } from '../biblioteca.service';
 import { ajax, AjaxResponse } from 'rxjs/ajax';
 import { Documento } from '../documento';
+import { Libreria } from '../libreria';
 
 @Component({
   selector: 'app-inserisci',
