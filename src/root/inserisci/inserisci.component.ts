@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-ricerca',
-  templateUrl: './ricerca.component.html',
-  styleUrls: ['./ricerca.component.css'],
+  selector: 'app-inserisci',
+  templateUrl: './inserisci.component.html',
+  styleUrls: ['./inserisci.component.css'],
   imports: [ CommonModule ],
   standalone: true
 })
-export class RicercaComponent implements OnInit {
-  title: string = '';
+export class InserisciComponent implements OnInit {
 
   constructor() { }
 
