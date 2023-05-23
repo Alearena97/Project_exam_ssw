@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AjaxResponse } from 'rxjs/ajax';
+import { Documento } from './documento';
+import { BibliotecaService } from './biblioteca.service';
 import { IntroduzioneComponent } from './introduzione/introduzione.component';
 import { RicercaComponent } from './ricerca/ricerca.component';
 import { InserisciComponent } from './inserisci/inserisci.component';
@@ -10,7 +12,8 @@ import { InserisciComponent } from './inserisci/inserisci.component';
   templateUrl: './root.component.html',
   styleUrls: ['./root.component.css'],
   imports: [ CommonModule, IntroduzioneComponent, RicercaComponent, InserisciComponent ],
-  standalone: true
+  providers: [BibliotecaService],
+  standalone: true,
 })
 export class RootComponent implements OnInit {
 
