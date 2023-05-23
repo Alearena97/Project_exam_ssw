@@ -1,3 +1,4 @@
 <app-introduzione > </app-introduzione>
 <app-ricerca > </app-ricerca>
-<app-inserisci > </app-inserisci>
+<button (click)="openIns()">{{buttonIns ? 'Chiudi menu' : 'Inserisci nuovo documento'}}</button>
+<app-inserisci *ngIf= "buttonIns" > </app-inserisci>

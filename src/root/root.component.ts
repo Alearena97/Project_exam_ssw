@@ -11,15 +11,21 @@ import { InserisciComponent } from './inserisci/inserisci.component';
   selector: 'app-root',
   templateUrl: './root.component.html',
   styleUrls: ['./root.component.css'],
-  imports: [ CommonModule, IntroduzioneComponent, RicercaComponent, InserisciComponent ],
+  imports: [
+    CommonModule,
+    IntroduzioneComponent,
+    RicercaComponent,
+    InserisciComponent,
+  ],
   providers: [BibliotecaService],
   standalone: true,
 })
 export class RootComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
+  buttonIns: boolean = false;
+  openIns() {
+    this.buttonIns = !this.buttonIns;
   }
-
+  ngOnInit() {}
 }
