@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { ajax, AjaxResponse } from 'rxjs/ajax';
 import { Documento } from './documento';
+import { Libreria } from './libreria';
 
 @Injectable({
   providedIn: 'root'
@@ -32,4 +33,6 @@ setDocument(documento:Documento): Observable<AjaxResponse<any>> {
   });  
 
 }
+
+
 }

@@ -23,13 +23,20 @@ export class InserisciComponent {
     var posizione: HTMLInputElement = document.getElementById("Posizione") as HTMLInputElement;
     var titolo: HTMLInputElement = document.getElementById("Titolo") as HTMLInputElement;
     var autore: HTMLInputElement = document.getElementById("Autore") as HTMLInputElement;
-
+    
     if (posizione.value.trim() === '' || titolo.value.trim() === '' || autore.value.trim() === '') {
       this.errore = 'Riempi tutti i campi prima di inserire un documento!';
       return;
     }
-
-    var newDocument : Documento = new Documento(posizione.value, autore.value, titolo.value,);
+    var newDocument : Documento = new Documento(posizione.value, autore.value, titolo.value,)
+    this.bs.getDocument().subscribe({
+      next: (x: AjaxResponse<any>) =>
+       {var newArchive = JSON.parse(x.response)
+      var libreria : Libreria = new Libreria(newArchive)
+      libreria.archivio.push(newDocument)},
+      error: (err) =>
+        console.error('Observer got an error: ' + JSON.stringify(err)),
+    });
     this.bs.setDocument(newDocument).subscribe({
       next: (x: AjaxResponse<any>) =>{ },
       error: (err) =>{
