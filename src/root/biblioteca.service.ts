@@ -24,7 +24,7 @@ export class BibliotecaService {
     });  
 
 }
-setDocument(documento:Documento): Observable<AjaxResponse<any>> {
+setDocument(documento:Array<Documento>): Observable<AjaxResponse<any>> {
   return ajax({
     method: 'POST',
     url: this.myURL+"set?key="+this.apiKey,

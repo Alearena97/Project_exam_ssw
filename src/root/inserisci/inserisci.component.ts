@@ -14,34 +14,52 @@ import { Libreria } from '../libreria';
   standalone: true,
 })
 export class InserisciComponent {
+  // stringa per l'errore se non compili tutti i campi
   errore : string = '';
+
+
   constructor(private bs: BibliotecaService) {}
   ngOnInit() {}
 
   newDocument() {
-    
+    //inizializzazione variabili tramite input 
     var posizione: HTMLInputElement = document.getElementById("Posizione") as HTMLInputElement;
     var titolo: HTMLInputElement = document.getElementById("Titolo") as HTMLInputElement;
     var autore: HTMLInputElement = document.getElementById("Autore") as HTMLInputElement;
-    
+    // controllo che i campi non siano vuoti
     if (posizione.value.trim() === '' || titolo.value.trim() === '' || autore.value.trim() === '') {
       this.errore = 'Riempi tutti i campi prima di inserire un documento!';
       return;
     }
+
+    // inizializzaione nuovo oggetto di classe documento che verrà inserito
     var newDocument : Documento = new Documento(posizione.value, autore.value, titolo.value,)
+    // richiedo l'archivio vuoto
     this.bs.getDocument().subscribe({
-      next: (x: AjaxResponse<any>) =>
-       {var newArchive = JSON.parse(x.response)
-      var libreria : Libreria = new Libreria(newArchive)
-      libreria.archivio.push(newDocument)},
+      next: (x: AjaxResponse<any>) => {
+        
+      //associo ad una variabile l'array di documenti scaricato e lo rendo una stringa di tipo JSON 
+       var newArchive = JSON.parse(x.response)
+
+      // creo la libreria con l'elenco dei libri
+      var libreria : Libreria = new Libreria(newArchive);
+      //inserisco il nuovo documento nell'archivio
+      libreria.archivio.push(newDocument)
+      this.bs.setDocument(libreria.archivio).subscribe({
+        next: (x: AjaxResponse<any>) => {
+
+        },
+        error: (err) =>
+        console.error('Observer got an error: ' + JSON.stringify(err))
+
+      })
+    },
       error: (err) =>
-        console.error('Observer got an error: ' + JSON.stringify(err)),
+        console.error('Observer got an error: ' + JSON.stringify(err))
     });
-    this.bs.setDocument(newDocument).subscribe({
-      next: (x: AjaxResponse<any>) =>{ },
-      error: (err) =>{
-       }
-    });
+
+
+    //svuoto i campi
     posizione.value='';
     titolo.value='';
     autore.value='';
