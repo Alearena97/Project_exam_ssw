@@ -14,25 +14,30 @@ import { Libreria } from '../libreria';
   standalone: true,
 })
 export class InserisciComponent {
-
+  errore : string = '';
   constructor(private bs: BibliotecaService) {}
   ngOnInit() {}
 
   newDocument() {
-   // this.errore = '';
+    
     var posizione: HTMLInputElement = document.getElementById("Posizione") as HTMLInputElement;
     var titolo: HTMLInputElement = document.getElementById("Titolo") as HTMLInputElement;
     var autore: HTMLInputElement = document.getElementById("Autore") as HTMLInputElement;
-    var noleggiatore: HTMLInputElement = document.getElementById("Noleggiatore") as HTMLInputElement;
-    var newDocument : Documento = new Documento(posizione.value, autore.value, titolo.value, noleggiatore.value);
+
+    if (posizione.value.trim() === '' || titolo.value.trim() === '' || autore.value.trim() === '') {
+      this.errore = 'Riempi tutti i campi prima di inserire un documento!';
+      return;
+    }
+
+    var newDocument : Documento = new Documento(posizione.value, autore.value, titolo.value,);
     this.bs.setDocument(newDocument).subscribe({
       next: (x: AjaxResponse<any>) =>{ },
-      error: (err) =>{ }
-    //    this.errore = 'La città non esiste',
+      error: (err) =>{
+       }
     });
     posizione.value='';
     titolo.value='';
     autore.value='';
-    noleggiatore.value='';
+    this.errore='';
   }
 }

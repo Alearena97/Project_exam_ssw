@@ -5,8 +5,9 @@
   <input id="Titolo"/>
   <p>Autore</p>
   <input id="Autore"/>
-  <p>Noleggiatore</p>
-  <input id="Noleggiatore"/>
   <br><br>
   <button (click)="newDocument()"> Inserisci</button>
+  <br>
+  <a *ngIf="errore">{{errore}}</a>
+  
 </div>
