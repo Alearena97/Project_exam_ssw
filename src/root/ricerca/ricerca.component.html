@@ -1,4 +1,13 @@
 <div>
   <p>Cerca un documento per titolo o autore.</p>
   <input id="Titolo_Autore" (input)="Research()"/>
+  <a *ngIf="errore">{{errore}}</a>
+  <ul>
+    <li *ngFor="let documento of libreria">
+      ID {{ documento.posizione }} - Titolo: {{ document.title }} - Autore: {{ document.author }} - Prestato a: {{ document.borrower}}
+      <br>
+      
+    
+    </li>
+  </ul>
 </div>

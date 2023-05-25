@@ -14,31 +14,35 @@ import { Libreria } from '../libreria';
   standalone: true
 })
 export class RicercaComponent {
-  // stringa per l'errore se non compili tutti i campi
+  // stringa per l'errore 
   errore : string = '';
-
+  libreria : Libreria[] = []
 
   constructor(private bs: BibliotecaService) {}
   ngOnInit() {}
 
   Research() {
     //inizializzazione variabili tramite input 
-    
-    // controllo che i campi non siano vuoti
-    //if (tit_aut.value.trim() === '') {
-    //  this.errore = 'Riempi tutti i campi prima di inserire un documento!';
-    //  return;}
+    var tit_aut: HTMLInputElement = document.getElementById("Titolo_Autore") as HTMLInputElement;
+    //var libreria : Libreria.archivio = []
+
     var newArchive : Array<Documento>
     // richiedo l'archivio vuoto
     this.bs.getDocument().subscribe({
       next: (x: AjaxResponse<any>) => {
-      var tit_aut: HTMLInputElement = document.getElementById("Titolo_Autore") as HTMLInputElement;
+
       console.log(tit_aut.value);
       //associo ad una variabile l'array di documenti scaricato e lo rendo una stringa di tipo JSON 
       var newArchive = JSON.parse(x.response)
 
-      // creo la libreria con l'elenco dei libri
+      // creo la libreria filtrando l'array di documenti con l'input inserito nella stringa 
       var libreria : Libreria = newArchive.filter((doc:Documento)  => (doc.titolo+doc.autore).toLowerCase().includes(tit_aut.value));
+      console.log(libreria);
+      // controllo che i campi non siano vuoti
+      if (libreria.archivio.length == 0) {
+      this.errore = 'Riempi tutti i campi prima di inserire un documento!';
+      return;}
+
       console.log(libreria);
     },
       error: (err) =>
@@ -47,7 +51,6 @@ export class RicercaComponent {
 
 
     //svuoto i campi
-    //tit_aut.value='';
     this.errore='';
   }
 }

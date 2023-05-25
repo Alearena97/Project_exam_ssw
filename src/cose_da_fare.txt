@@ -5,3 +5,4 @@ noleggiatore opzionale NELL'INSERIMENTO
 assicurarsi che tutti i campi di inserimento siano pieni ----------------------OK------------------------
 stringa che conferma l'inserimento 
 noleggiatore visibile nella ricerca 
+risolvere la ricerca con UPPERCASE
