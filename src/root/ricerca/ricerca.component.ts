@@ -21,9 +21,9 @@ export class RicercaComponent {
   constructor(private bs: BibliotecaService) {}
   ngOnInit() {}
 
-  Research(stringa) {
+  Research() {
     //inizializzazione variabili tramite input 
-    var tit_aut: HTMLInputElement = document.getElementById("Titolo_Autore") as HTMLInputElement;
+    
     // controllo che i campi non siano vuoti
     //if (tit_aut.value.trim() === '') {
     //  this.errore = 'Riempi tutti i campi prima di inserire un documento!';
@@ -32,11 +32,13 @@ export class RicercaComponent {
     // richiedo l'archivio vuoto
     this.bs.getDocument().subscribe({
       next: (x: AjaxResponse<any>) => {
+      var tit_aut: HTMLInputElement = document.getElementById("Titolo_Autore") as HTMLInputElement;
+      console.log(tit_aut.value);
       //associo ad una variabile l'array di documenti scaricato e lo rendo una stringa di tipo JSON 
-       var newArchive = JSON.parse(x.response)
+      var newArchive = JSON.parse(x.response)
 
       // creo la libreria con l'elenco dei libri
-      var libreria : Libreria = new Libreria(newArchive);
+      var libreria : Libreria = newArchive.filter((doc:Documento)  => (doc.titolo+doc.autore).toLowerCase().includes(tit_aut.value));
       console.log(libreria);
     },
       error: (err) =>
@@ -45,7 +47,7 @@ export class RicercaComponent {
 
 
     //svuoto i campi
-    tit_aut.value='';
+    //tit_aut.value='';
     this.errore='';
   }
 }
