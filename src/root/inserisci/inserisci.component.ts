@@ -22,10 +22,11 @@ export class InserisciComponent {
   ngOnInit() {}
 
   newDocument() {
-    //inizializzazione variabili tramite input 
+    //inizializzazione variabili 
     var posizione: HTMLInputElement = document.getElementById("Posizione") as HTMLInputElement;
     var titolo: HTMLInputElement = document.getElementById("Titolo") as HTMLInputElement;
     var autore: HTMLInputElement = document.getElementById("Autore") as HTMLInputElement;
+    var noleggiatore: string = 'Disponibile';
     // controllo che i campi non siano vuoti
     if (posizione.value.trim() === '' || titolo.value.trim() === '' || autore.value.trim() === '') {
       this.errore = 'Riempi tutti i campi prima di inserire un documento!';
@@ -33,7 +34,7 @@ export class InserisciComponent {
     }
 
     // inizializzaione nuovo oggetto di classe documento che verrà inserito
-    var newDocument : Documento = new Documento(posizione.value, autore.value, titolo.value,)
+    var newDocument : Documento = new Documento(posizione.value, autore.value, titolo.value,noleggiatore)
     // richiedo l'archivio vuoto
     this.bs.getDocument().subscribe({
       next: (x: AjaxResponse<any>) => {

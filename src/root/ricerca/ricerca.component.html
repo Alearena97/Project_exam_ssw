@@ -7,7 +7,8 @@
     <li *ngFor="let documento of elenco_libri">
       ID {{ documento.posizione }} - Titolo: {{ documento.titolo }} - Autore: {{ documento.autore }} - Prestato a: {{ documento.noleggiatore}}
       <br>
-      <app-elimina > </app-elimina>
+      <!-- nell'app elimina inserisco direttamente la variabile libro selezionato -->
+      <app-elimina [libro_selezionato] = 'documento'> </app-elimina>
       <app-noleggia > </app-noleggia>
       <app-restituisci > </app-restituisci>
     </li>

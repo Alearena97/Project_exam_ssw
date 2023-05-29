@@ -24,7 +24,9 @@ export class RicercaComponent {
   // stringa per l'errore 
   errore : string = '';
   // dichiarazione dell'array che conterrà i risultati filtrati
-  elenco_libri : Array<Documento> = []
+  elenco_libri : Array<Documento> = [];
+  //creo una variabile di tipo documento vuota da utilizzare poi negli altri component tramite @INPUT 
+  libro_selezionato : Documento = new Documento ('','','','');
 
   constructor(private bs: BibliotecaService) {}
   ngOnInit() {}

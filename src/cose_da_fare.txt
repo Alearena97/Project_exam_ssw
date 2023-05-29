@@ -1,8 +1,10 @@
 lunghezza massima della biblioteca
 menu a tendina nell'inserimento della posizione
 inserimento di più di un libro ---------------------------------------OK-----------------------
-noleggiatore opzionale NELL'INSERIMENTO
+noleggiatore opzionale NELL'INSERIMENTO ----------------OK---------------------
 assicurarsi che tutti i campi di inserimento siano pieni ----------------------OK------------------------
 stringa che conferma l'inserimento 
-noleggiatore visibile nella ricerca 
+noleggiatore visibile nella ricerca ------------------ Ok -----------------
 risolvere la ricerca con UPPERCASE
+controllare che un libro non sia già presente durante l'inserimento (titolo, autore, posizione)
+stringa che dice OK ELIMINATO nell'elimina
