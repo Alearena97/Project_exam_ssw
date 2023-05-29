@@ -4,13 +4,20 @@ import { BibliotecaService } from '../biblioteca.service';
 import { ajax, AjaxResponse } from 'rxjs/ajax';
 import { Documento } from '../documento';
 import { Libreria } from '../libreria';
+import { EliminaComponent} from './elimina/elimina.component'
+import { NoleggiaComponent} from './noleggia/noleggia.component'
+import { RestituisciComponent} from './restituisci/restituisci.component'
+
 
 @Component({
   selector: 'app-ricerca',
   templateUrl: './ricerca.component.html',
   styleUrls: ['./ricerca.component.css'],
   providers: [BibliotecaService],
-  imports: [ CommonModule ],
+  imports: [ CommonModule ,
+  EliminaComponent,
+  NoleggiaComponent,
+  RestituisciComponent],
   standalone: true
 })
 export class RicercaComponent {
