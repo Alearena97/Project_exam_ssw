@@ -1,15 +1,20 @@
 <div>
   <p>Cerca un documento per titolo o autore.</p>
   <input id="Titolo_Autore" (input)="Research()"/>
+  <!-- specifico il messaggio che compare se un libro viene eliminato -->
+  <p *ngIf = 'messaggio'> {{messaggio}}</p>
   <br><br>
   <a *ngIf="errore">{{errore}}</a>
   <ol>
     <li *ngFor="let documento of elenco_libri">
       ID {{ documento.posizione }} - Titolo: {{ documento.titolo }} - Autore: {{ documento.autore }} - Prestato a: {{ documento.noleggiatore}}
       <br>
-      <!-- nell'app elimina inserisco direttamente la variabile libro selezionato -->
+      <!-- nell'app elimina emetto tramite input la variabile libro_selezionato -->
+      <!-- nell'app elimina ottengo l'output dell'evento definito in elimina-->
       <app-elimina [libro_selezionato] = 'documento' (onUpdate_delete) = 'onUpdate_view($event)'> </app-elimina>
+      <br><br>
       <app-noleggia > </app-noleggia>
+      <br><br>
       <app-restituisci > </app-restituisci>
     </li>
   </ol>

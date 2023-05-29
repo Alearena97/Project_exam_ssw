@@ -18,17 +18,22 @@ export class EliminaComponent {
   errore: string = '';
 
   @Input() libro_selezionato: Documento = new Documento('', '', '', '');
-  // mando fuori un evento che comunica un array di documenti (libreria_update)
-  @Output() onUpdate_delete : EventEmitter<Documento[]> = new EventEmitter<Documento[]>();
+  // mando fuori un evento che comunica un array di documenti (libreria_update) e un messaggio
+  @Output() onUpdate_delete = new EventEmitter<{message:string,update:Documento[]}>();
   constructor(private bs: BibliotecaService) {}
   ngOnInit() {}
 
   DeleteDocument() {
-    // if (this.libro_selezionato.noleggiatore != undefined) {
-    // console.log(this.libro_selezionato.noleggiatore)
-    //   this.errore = 'Non è possibile eliminare un documento noleggiato';
-    //  return;
-    //  }
+
+    //Inserisco un controllo che non permette di eliminare un documento già noleggiato con un timeout
+    if (this.libro_selezionato.noleggiatore != "Disponibile") {
+    this.errore = 'Non è possibile eliminare un documento noleggiato!';
+    setInterval (() => {
+    this.errore = ''
+    },3000)
+    
+    return;
+    }
 
     // richiedo l'archivio vuoto
     this.bs.getDocument().subscribe({
@@ -40,7 +45,6 @@ export class EliminaComponent {
         var libreria_update = libreria.archivio.filter(
           (doc: Documento) => doc.posizione != this.libro_selezionato.posizione
         );
-        console.log(libreria);
 
         //ricarico la nuova libreria tramite la SET
         this.bs.setDocument(libreria_update).subscribe({
@@ -48,8 +52,8 @@ export class EliminaComponent {
           error: (err) =>
             console.error('Observer got an error: ' + JSON.stringify(err)),
         });
-        //dopo aver eliminato emetto un evento che contiene l'array
-        this.onUpdate_delete.emit(libreria_update)
+        //dopo aver eliminato emetto un evento che contiene l'array e un messaggio 
+        this.onUpdate_delete.emit({message: 'Documento eliminato!',update: libreria_update})
       },
       error: (err) =>
         console.error('Observer got an error: ' + JSON.stringify(err)),

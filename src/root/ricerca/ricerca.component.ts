@@ -21,6 +21,7 @@ import { RestituisciComponent} from './restituisci/restituisci.component'
   standalone: true
 })
 export class RicercaComponent {
+  messaggio : string = '';
   // stringa per l'errore 
   errore : string = '';
   // dichiarazione dell'array che conterrà i risultati filtrati
@@ -31,9 +32,14 @@ export class RicercaComponent {
   constructor(private bs: BibliotecaService) {}
   ngOnInit() {}
 
-  //funzione per fare l'aggiornamento della view dopo una funzionalità
-  onUpdate_view(e:Array<Documento>){
-    this.elenco_libri = e;
+  //funzione per fare l'aggiornamento della view dopo una funzionalità con tipo "any" perchè contiene sia un array che una stringa
+  onUpdate_view(e:any){
+    this.elenco_libri = e.update;
+    //inserisco un timer per la scomparsa del messaggio
+    this.messaggio = e.message;
+    setInterval (() => {
+    this.messaggio = ''
+    },2000)
   }
 
   Research() {
