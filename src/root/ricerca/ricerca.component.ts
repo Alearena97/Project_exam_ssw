@@ -31,6 +31,11 @@ export class RicercaComponent {
   constructor(private bs: BibliotecaService) {}
   ngOnInit() {}
 
+  //funzione per fare l'aggiornamento della view dopo una funzionalità
+  onUpdate_view(e:Array<Documento>){
+    this.elenco_libri = e;
+  }
+
   Research() {
     //inizializzazione variabili tramite input 
     var tit_aut: HTMLInputElement = document.getElementById("Titolo_Autore") as HTMLInputElement;

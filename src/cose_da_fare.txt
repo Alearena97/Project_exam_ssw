@@ -6,5 +6,6 @@ assicurarsi che tutti i campi di inserimento siano pieni ----------------------O
 stringa che conferma l'inserimento 
 noleggiatore visibile nella ricerca ------------------ Ok -----------------
 risolvere la ricerca con UPPERCASE
-controllare che un libro non sia già presente durante l'inserimento (titolo, autore, posizione)
+controllare che un libro non sia già presente durante l'inserimento ( posizione)
 stringa che dice OK ELIMINATO nell'elimina
+controllare che si possa inserire solo una posizione numerica 
