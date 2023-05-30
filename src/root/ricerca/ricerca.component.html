@@ -17,7 +17,7 @@
       <!-- nell'app noleggia ottengo l'output dell'evento definito in noleggia-->
       <app-noleggia [libro_selezionato] = 'documento' (onUpdate_borrow) = 'onUpdate_view($event)'> </app-noleggia>
       <br><br>
-      <app-restituisci > </app-restituisci>
+      <app-restituisci [libro_selezionato] = 'documento' (onUpdate_return) = 'onUpdate_view($event)'> </app-restituisci>
       <br>
       <hr>
     </li>

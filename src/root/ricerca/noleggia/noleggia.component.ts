@@ -38,8 +38,6 @@ export class NoleggiaComponent {
 
   NoleggiaDocument() {
 
-    //Inserisco un controllo che non permette di eliminare un documento già noleggiato con un timeout
-
     var prestatario: HTMLInputElement = document.getElementById("Prestatario") as HTMLInputElement;
 
     //Inserisco un controllo che non permette di eliminare un documento già noleggiato con un timeout
@@ -48,7 +46,7 @@ export class NoleggiaComponent {
     this.errore = 'Non è possibile noleggiare un documento già noleggiato';
     setInterval (() => {
     this.errore = ''
-    },3000)
+    },5000)
     return;
     }
 

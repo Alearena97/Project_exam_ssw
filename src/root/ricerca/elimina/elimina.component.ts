@@ -21,7 +21,9 @@ export class EliminaComponent {
   @Input() libro_selezionato: Documento = new Documento('', '', '', '');
   // mando fuori un evento che comunica un array di documenti (libreria_update) e un messaggio
   @Output() onUpdate_delete = new EventEmitter<{message:string,update:Documento[]}>();
+
   constructor(private bs: BibliotecaService) {}
+  
   ngOnInit() {}
 
   DeleteDocument() {
@@ -35,7 +37,7 @@ export class EliminaComponent {
     
     return;
     }
-
+    
     // richiedo l'archivio vuoto
     this.bs.getDocument().subscribe({
       next: (x: AjaxResponse<any>) => {

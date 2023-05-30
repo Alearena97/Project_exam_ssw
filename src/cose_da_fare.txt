@@ -10,3 +10,4 @@ controllare che si possa inserire solo una posizione numerica
 pulire la view dopo l'elimina
 controllare che il campo prestatario non sia vuoto in NOLEGGIA
 stringa che conferma l'inserimento 
+controllo che il prestatario non sia un numero.
