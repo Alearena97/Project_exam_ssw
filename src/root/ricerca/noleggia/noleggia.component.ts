@@ -16,7 +16,11 @@ import { Libreria } from '../../libreria';
 export class NoleggiaComponent {
   // stringa per l'errore
   errore: string = '';
+
+  // inizializzazione di una variabile che cambia da true a false per mostrare il div del noleggio
   noleggioVisibile: boolean = false;
+
+  // funzione per cambiare la variabile
 
   toggleNoleggio() {
     this.noleggioVisibile = !this.noleggioVisibile;
@@ -24,7 +28,7 @@ export class NoleggiaComponent {
 
 
 
-
+  // prendo in input da ricerca la variabile libro selezionato
   @Input() libro_selezionato: Documento = new Documento('', '', '', '');
   // mando fuori un evento che comunica un array di documenti (libreria_update) e un messaggio
   @Output() onUpdate_borrow = new EventEmitter<{message:string,update:Documento[]}>();
@@ -38,6 +42,7 @@ export class NoleggiaComponent {
 
     var prestatario: HTMLInputElement = document.getElementById("Prestatario") as HTMLInputElement;
 
+    //Inserisco un controllo che non permette di eliminare un documento già noleggiato con un timeout
 
     if (this.libro_selezionato.noleggiatore != "Disponibile") {
     this.errore = 'Non è possibile noleggiare un documento già noleggiato';
@@ -52,8 +57,9 @@ export class NoleggiaComponent {
       next: (x: AjaxResponse<any>) => {
         //associo ad una variabile l'array di documenti scaricato e lo rendo una stringa di tipo JSON
         var newArchive = JSON.parse(x.response);
+
         let libreria: Libreria = new Libreria(newArchive);
-        // creo la libreria con l'elenco dei libri controllando tramite filter tutti gli elementi che hanno posizione diversa da quella selezionata
+        // creo la libreria con l'elenco dei libri controllando tramite map la posizione del documento e sostituendo il valore 'noleggiatore' con quello in input di prestatario.
         libreria.archivio.map(
           (doc) => {
             if (doc.posizione == this.libro_selezionato.posizione ){

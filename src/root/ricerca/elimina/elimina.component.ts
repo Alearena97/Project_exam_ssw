@@ -16,7 +16,8 @@ import { Libreria } from '../../libreria';
 export class EliminaComponent {
   // stringa per l'errore
   errore: string = '';
-
+  
+  // prendo in input da ricerca la variabile libro selezionato
   @Input() libro_selezionato: Documento = new Documento('', '', '', '');
   // mando fuori un evento che comunica un array di documenti (libreria_update) e un messaggio
   @Output() onUpdate_delete = new EventEmitter<{message:string,update:Documento[]}>();

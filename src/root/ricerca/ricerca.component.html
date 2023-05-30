@@ -9,10 +9,12 @@
     <li *ngFor="let documento of elenco_libri">
       ID {{ documento.posizione }} - Titolo: {{ documento.titolo }} - Autore: {{ documento.autore }} - Prestato a: {{ documento.noleggiatore}}
       <br>
-      <!-- nell'app elimina emetto tramite input la variabile libro_selezionato -->
+      <!-- nell'app ricerca emetto tramite input la variabile libro_selezionato -->
       <!-- nell'app elimina ottengo l'output dell'evento definito in elimina-->
       <app-elimina [libro_selezionato] = 'documento' (onUpdate_delete) = 'onUpdate_view($event)'> </app-elimina>
       <br><br>
+      <!-- nell'app ricerca emetto tramite input la variabile libro_selezionato -->
+      <!-- nell'app noleggia ottengo l'output dell'evento definito in noleggia-->
       <app-noleggia [libro_selezionato] = 'documento' (onUpdate_borrow) = 'onUpdate_view($event)'> </app-noleggia>
       <br><br>
       <app-restituisci > </app-restituisci>
