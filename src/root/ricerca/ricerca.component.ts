@@ -60,7 +60,7 @@ export class RicercaComponent {
 
       // creo la libreria filtrando l'array di documenti con l'input inserito nella stringa 
       var libreria: Libreria = new Libreria(newArchive)
-      this.elenco_libri = libreria.archivio.filter((doc:Documento)  => (doc.titolo+doc.autore).toLowerCase().includes(tit_aut.value));
+      this.elenco_libri = libreria.archivio.filter((doc:Documento)  => (doc.titolo+doc.autore).toLowerCase().includes(tit_aut.value.toLocaleLowerCase()));
       //console.log(this.elenco_libri);
       // controllo che ci siano risultati
       if (this.elenco_libri.length == 0) {
