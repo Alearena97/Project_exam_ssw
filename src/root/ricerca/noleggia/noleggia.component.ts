@@ -16,18 +16,27 @@ import { Libreria } from '../../libreria';
 export class NoleggiaComponent {
   // stringa per l'errore
   errore: string = '';
+  noleggioVisibile: boolean = false;
+
+  toggleNoleggio() {
+    this.noleggioVisibile = !this.noleggioVisibile;
+  }
+
+
+
 
   @Input() libro_selezionato: Documento = new Documento('', '', '', '');
   // mando fuori un evento che comunica un array di documenti (libreria_update) e un messaggio
-  @Output() onUpdate_delete = new EventEmitter<{message:string,update:Documento[]}>();
+  @Output() onUpdate_borrow = new EventEmitter<{message:string,update:Documento[]}>();
   constructor(private bs: BibliotecaService) {}
+  
   ngOnInit() {}
 
   NoleggiaDocument() {
 
     //Inserisco un controllo che non permette di eliminare un documento già noleggiato con un timeout
 
-    var prestatario: HTMLInputElement = document.getElementById("Titolo_Autore") as HTMLInputElement;
+    var prestatario: HTMLInputElement = document.getElementById("Prestatario") as HTMLInputElement;
 
 
     if (this.libro_selezionato.noleggiatore != "Disponibile") {
@@ -45,18 +54,20 @@ export class NoleggiaComponent {
         var newArchive = JSON.parse(x.response);
         let libreria: Libreria = new Libreria(newArchive);
         // creo la libreria con l'elenco dei libri controllando tramite filter tutti gli elementi che hanno posizione diversa da quella selezionata
-        var libreria_update = libreria.archivio.filter(
-          (doc: Documento) => doc.posizione != this.libro_selezionato.posizione
-        );
+        libreria.archivio.map(
+          (doc) => {
+            if (doc.posizione == this.libro_selezionato.posizione ){
+             doc.noleggiatore = prestatario.value;}
+            });
 
         //ricarico la nuova libreria tramite la SET
-        this.bs.setDocument(libreria_update).subscribe({
+        this.bs.setDocument(libreria.archivio).subscribe({
           next: (x: AjaxResponse<any>) => {},
           error: (err) =>
             console.error('Observer got an error: ' + JSON.stringify(err)),
         });
         //dopo aver eliminato emetto un evento che contiene l'array e un messaggio 
-        this.onUpdate_delete.emit({message: 'Documento eliminato!',update: libreria_update})
+        this.onUpdate_borrow.emit({message: 'Documento noleggiato!',update: libreria.archivio})
       },
       error: (err) =>
         console.error('Observer got an error: ' + JSON.stringify(err)),
@@ -66,4 +77,5 @@ export class NoleggiaComponent {
 
     this.errore = '';
   }
+  
 }

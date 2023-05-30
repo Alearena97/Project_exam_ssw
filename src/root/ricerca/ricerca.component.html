@@ -13,9 +13,12 @@
       <!-- nell'app elimina ottengo l'output dell'evento definito in elimina-->
       <app-elimina [libro_selezionato] = 'documento' (onUpdate_delete) = 'onUpdate_view($event)'> </app-elimina>
       <br><br>
-      <app-noleggia > </app-noleggia>
+      <app-noleggia [libro_selezionato] = 'documento' (onUpdate_borrow) = 'onUpdate_view($event)'> </app-noleggia>
       <br><br>
       <app-restituisci > </app-restituisci>
+      <br>
+      <hr>
     </li>
   </ol>
+ 
 </div>

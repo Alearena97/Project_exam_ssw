@@ -1,7 +1,9 @@
-<button > Noleggia </button>
-<a *ngIf="errore">{{errore}}</a>
+<button (click)='toggleNoleggio()'>{{noleggioVisibile ? 'Torna indietro' : 'Noleggia'}}</button>
 <!-- specifico il messaggio che compare se un libro viene eliminato 
 <a *ngIf (click)="NoleggiaButton> </a>
 -->
+<div id= 'noleggio' *ngIf = 'noleggioVisibile'>
 <input id="Prestatario"/>
 <button (click)="NoleggiaDocument()" > Ok </button>
+<a *ngIf="errore">{{errore}}</a>
+</div>
