@@ -13,3 +13,27 @@ footer {
   
 }
 
+button{
+  
+
+  display: inline-block;
+  outline: 0;
+  cursor: pointer;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 0 rgb(213 217 217 / 50%);
+  background: #FFF;
+  border: 1px solid #D5D9D9;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  height: 31px;
+  padding: 0 11px;
+  text-align: center;
+  color: #0F1111;
+  
+}
+
+button :hover{
+  background-color: #F7FAFA;
+  border-color: #D5D9D9;
+}
