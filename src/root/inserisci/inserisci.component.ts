@@ -16,7 +16,7 @@ import { Libreria } from '../libreria';
 export class InserisciComponent {
   // stringa per l'errore se non compili tutti i campi
   errore : string = '';
-
+  messaggio : string = '';
 
   constructor(private bs: BibliotecaService) {}
   ngOnInit() {}
@@ -48,7 +48,12 @@ export class InserisciComponent {
       libreria.archivio.push(newDocument)
       this.bs.setDocument(libreria.archivio).subscribe({
         next: (x: AjaxResponse<any>) => {
-
+            this.messaggio = 'Documento inserito correttamente!';
+            setInterval (() => {
+            this.messaggio = ''
+            },5000)
+            return;
+            
         },
         error: (err) =>
         console.error('Observer got an error: ' + JSON.stringify(err))

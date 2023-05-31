@@ -16,7 +16,7 @@ import { Libreria } from '../../libreria';
 export class NoleggiaComponent {
   // stringa per l'errore
   errore: string = '';
-
+  errore2 : string = '';
   // inizializzazione di una variabile che cambia da true a false per mostrare il div del noleggio
   noleggioVisibile: boolean = false;
 
@@ -40,8 +40,16 @@ export class NoleggiaComponent {
 
     var prestatario: HTMLInputElement = document.getElementById("Prestatario") as HTMLInputElement;
 
-    //Inserisco un controllo che non permette di eliminare un documento già noleggiato con un timeout
+    //Inserisco un controllo che non permette di lasciare il campo vuoto con un timeout
 
+    if (prestatario.value.trim() === '' ) {
+      this.errore = 'Riempi il campo con il tuo nome prima di noleggiare il documento!';
+      setInterval (() => {
+        this.errore = ''
+        },5000)
+        return;
+    }
+   //Inserisco un controllo che non permette di eliminare un documento già noleggiato con un timeout
     if (this.libro_selezionato.noleggiatore != "Disponibile") {
     this.errore = 'Non è possibile noleggiare un documento già noleggiato';
     setInterval (() => {
