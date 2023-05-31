@@ -1,6 +1,13 @@
 <app-introduzione > </app-introduzione>
+<div id = bottoni>
 <button (click)="openIns()">{{buttonIns ? 'Chiudi menu' : 'Inserisci nuovo documento'}}</button>
 <app-inserisci *ngIf= "buttonIns" > </app-inserisci>
+</div>
 <br><br>
+<div id = bottoni>
 <button (click)="openRic()">{{buttonRic ? 'Chiudi menu' : 'Ricerca un documento'}}</button>
 <app-ricerca *ngIf= "buttonRic"> </app-ricerca>
+</div>
+<br><br>
+
+<footer> {{footer}}</footer>

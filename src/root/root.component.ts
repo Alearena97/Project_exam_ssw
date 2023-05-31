@@ -33,4 +33,6 @@ export class RootComponent implements OnInit {
     this.buttonRic = !this.buttonRic;
   }
   ngOnInit() {}
+
+  footer: string = "Sviluppo di Servizi Web - Anno accademico 2022/2023 - Alessandro Arena 544907"
 }
