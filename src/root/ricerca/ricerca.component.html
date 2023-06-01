@@ -1,14 +1,14 @@
 <div>
   <p>Cerca un documento per titolo o autore.</p>
   <input id="Titolo_Autore" (input)="Research()"/>
-  <!-- specifico il messaggio che compare se un libro viene eliminato -->
-  <p *ngIf = 'messaggio'> {{messaggio}}</p>
+  <!-- specifico il messaggio che compare se un libro viene eliminato o restituito-->
+  <p id='messaggio' *ngIf = 'messaggio'> {{messaggio}}</p>
   <br><br>
   <a *ngIf="errore">{{errore}}</a>
   <ol>
     <li *ngFor="let documento of elenco_libri">
       ID {{ documento.posizione }} - Titolo: {{ documento.titolo }} - Autore: {{ documento.autore }} - Prestato a: {{ documento.noleggiatore}}
-      <br>
+      <br><br>
       <!-- nell'app ricerca emetto tramite input la variabile libro_selezionato -->
       <!-- nell'app elimina ottengo l'output dell'evento definito in elimina-->
       <app-elimina [libro_selezionato] = 'documento' (onUpdate_delete) = 'onUpdate_view($event)'> </app-elimina>
@@ -18,7 +18,7 @@
       <app-noleggia [libro_selezionato] = 'documento' (onUpdate_borrow) = 'onUpdate_view($event)'> </app-noleggia>
       <br><br>
       <app-restituisci [libro_selezionato] = 'documento' (onUpdate_return) = 'onUpdate_view($event)'> </app-restituisci>
-      <br>
+      <br><br>
       <hr>
     </li>
   </ol>

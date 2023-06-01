@@ -30,7 +30,10 @@ export class InserisciComponent {
     // controllo che i campi non siano vuoti
     if (posizione.value.trim() === '' || titolo.value.trim() === '' || autore.value.trim() === '') {
       this.errore = 'Riempi tutti i campi prima di inserire un documento!';
-      return;
+      setInterval (() => {
+        this.errore = ''
+        },5000)
+        return;
     }
 
     // inizializzaione nuovo oggetto di classe documento che verrà inserito

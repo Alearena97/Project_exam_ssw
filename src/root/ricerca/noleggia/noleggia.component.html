@@ -1,8 +1,10 @@
 <button (click)='toggleNoleggio()'>{{noleggioVisibile ? 'Torna indietro' : 'Noleggia'}}</button>
 <!-- creo il bottone con un InLine If che cambia il testo e la varabile noleggioVisibile-->
 <div id= 'noleggio' *ngIf = 'noleggioVisibile'>
+<br>
 <input id="Prestatario"/>
 <button (click)="NoleggiaDocument()" > Ok </button>
+<br><br>
 <a *ngIf="errore">{{errore}}</a>
 <a *ngIf="errore2">{{errore2}}</a>
 </div>
