@@ -6,6 +6,7 @@
   <br><br>
   <a *ngIf="errore">{{errore}}</a>
   <ol>
+    <p *ngIf ='elenco_libri.length !== 0'>Documenti trovati : {{elenco_libri.length}}</p>
     <li *ngFor="let documento of elenco_libri">
       ID {{ documento.posizione }} - Titolo: {{ documento.titolo }} - Autore: {{ documento.autore }} - Prestato a: {{ documento.noleggiatore}}
       <br><br>
@@ -17,7 +18,7 @@
       <!-- nell'app noleggia ottengo l'output dell'evento definito in noleggia-->
       <app-noleggia [libro_selezionato] = 'documento' (onUpdate_borrow) = 'onUpdate_view($event)'> </app-noleggia>
       <br><br>
-      <app-restituisci [libro_selezionato] = 'documento' (onUpdate_return) = 'onUpdate_view($event)'> </app-restituisci>
+      <app-restituisci [libro_selezionato] = 'documento' (onUpdate_return) = 'onUpdate_view($event)'> </app-restituisci> 
       <br><br>
       <hr>
     </li>

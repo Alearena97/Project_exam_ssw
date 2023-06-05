@@ -11,7 +11,6 @@ import { CommonModule } from '@angular/common';
 export class IntroduzioneComponent implements OnInit {
   titolo: string = 'Benvenuto in Biblioteca!';
   sottotitolo: string = "Seleziona l'azione che vuoi effettuare."
-  //footer: string = "Prova prova footerone"
   
 
   constructor() { }
