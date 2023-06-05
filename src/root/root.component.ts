@@ -6,6 +6,7 @@ import { BibliotecaService } from './biblioteca.service';
 import { IntroduzioneComponent } from './introduzione/introduzione.component';
 import { RicercaComponent } from './ricerca/ricerca.component';
 import { InserisciComponent } from './inserisci/inserisci.component';
+import { FooterComponent } from './footer/footer.component'
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ import { InserisciComponent } from './inserisci/inserisci.component';
     IntroduzioneComponent,
     RicercaComponent,
     InserisciComponent,
+    FooterComponent,
   ],
   providers: [BibliotecaService],
   standalone: true,
@@ -34,5 +36,5 @@ export class RootComponent implements OnInit {
   }
   ngOnInit() {}
 
-  footer: string = "Sviluppo di Servizi Web - Anno accademico 2022/2023 - Alessandro Arena 544907"
+
 }
