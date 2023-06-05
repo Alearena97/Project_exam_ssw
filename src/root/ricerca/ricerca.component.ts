@@ -29,8 +29,10 @@ export class RicercaComponent {
   //creo una variabile di tipo documento vuota da utilizzare poi negli altri component tramite @INPUT 
   libro_selezionato : Documento = new Documento ('','','','');
 
+
   constructor(private bs: BibliotecaService) {}
   ngOnInit() {}
+
 
   //funzione per fare l'aggiornamento della view dopo una funzionalità con tipo "any" perchè contiene sia un array che una stringa
   onUpdate_view(e:any){

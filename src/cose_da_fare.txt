@@ -11,3 +11,31 @@ pulire la view dopo l'elimina- noleggia- restituisci
 controllare che il campo prestatario non sia vuoto in NOLEGGIA ----------------------OK-----------------
 stringa che conferma l'inserimento -------------------OK---------------
 controllo che il prestatario non sia un numero.
+
+
+
+
+<p *ngIf ='risultati_trovati !== false'>Documenti trovati : {{elenco_libri.length}}</p>
+
+
+ //variabile per mostrare la stringa "risultati trovati"
+  risultati_trovati : boolean = false;
+
+   showNumberResult(){
+    this.risultati_trovati = true;
+  }
+
+
+   Research() {
+    this.showNumberResult();
+    //inizializzazione variabili tramite input 
+    var tit_aut: HTMLInputElement = document.getElementById("Titolo_Autore") as HTMLInputElement;
+    //var libreria : Libreria.archivio = []
+    // controllo che se l'input è vuoto l'elenco libri venga svuotato per non mostrarli 
+    if (tit_aut.value == "") {
+      this.elenco_libri = [];
+      this.risultati_trovati = false;
+      return;}
+    // richiedo l'archivio vuoto
+    this.bs.getDocument().subscribe({
+      next: (x: AjaxResponse<any>) => {
