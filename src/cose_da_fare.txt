@@ -1,5 +1,0 @@
-lunghezza massima della biblioteca
-menu a tendina nell'inserimento della posizione
-inserimento di più di un libro 
-noleggiatore opzionale NELL'INSERIMENTO
-assicurarsi che tutti i campi di inserimento siano pieni ----------------------OK------------------------

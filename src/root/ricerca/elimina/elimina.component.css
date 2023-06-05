@@ -1,4 +1,3 @@
-
 button{
   
 
@@ -22,4 +21,11 @@ button{
 button :hover{
   background-color: #F7FAFA;
   border-color: #D5D9D9;
+}
+
+a{
+  font-family: 'Roboto Condensed', sans-serif;
+  color: #ff0000;
+  background-color: rgb(255, 255, 255);
+  
 }

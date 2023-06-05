@@ -13,7 +13,6 @@ export class BibliotecaService {
   myURL: string  =
     "https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint/";
 
-  constructor() { }
 
   getDocument(): Observable<AjaxResponse<any>> {
     return ajax({
@@ -23,7 +22,7 @@ export class BibliotecaService {
     });  
 
 }
-setDocument(documento:Documento): Observable<AjaxResponse<any>> {
+setDocument(documento:Array<Documento>): Observable<AjaxResponse<any>> {
   return ajax({
     method: 'POST',
     url: this.myURL+"set?key="+this.apiKey,
@@ -32,4 +31,6 @@ setDocument(documento:Documento): Observable<AjaxResponse<any>> {
   });  
 
 }
+
+
 }

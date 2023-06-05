@@ -1,1 +1,6 @@
-/* Add application styles & imports to this file! */
+body{
+  background-color: rgb(194, 225, 233);
+  justify-content: center;
+  display: flex;
+  text-align: center;
+}

@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AjaxResponse } from 'rxjs/ajax';
-import { Documento } from './documento';
 import { BibliotecaService } from './biblioteca.service';
 import { IntroduzioneComponent } from './introduzione/introduzione.component';
 import { RicercaComponent } from './ricerca/ricerca.component';
 import { InserisciComponent } from './inserisci/inserisci.component';
+import { FooterComponent } from './footer/footer.component'
 
 @Component({
   selector: 'app-root',
@@ -16,12 +15,12 @@ import { InserisciComponent } from './inserisci/inserisci.component';
     IntroduzioneComponent,
     RicercaComponent,
     InserisciComponent,
+    FooterComponent,
   ],
   providers: [BibliotecaService],
   standalone: true,
 })
 export class RootComponent implements OnInit {
-  constructor() {}
 
   buttonIns: boolean = false;
   openIns() {
@@ -33,4 +32,6 @@ export class RootComponent implements OnInit {
     this.buttonRic = !this.buttonRic;
   }
   ngOnInit() {}
+
+
 }
