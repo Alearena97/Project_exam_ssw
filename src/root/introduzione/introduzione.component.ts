@@ -13,8 +13,6 @@ export class IntroduzioneComponent implements OnInit {
   sottotitolo: string = "Seleziona l'azione che vuoi effettuare."
   
 
-  constructor() { }
-
   ngOnInit() {
   }
 

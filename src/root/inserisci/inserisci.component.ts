@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BibliotecaService } from '../biblioteca.service';
-import { ajax, AjaxResponse } from 'rxjs/ajax';
+import { AjaxResponse } from 'rxjs/ajax';
 import { Documento } from '../documento';
 import { Libreria } from '../libreria';
 
@@ -19,7 +19,6 @@ export class InserisciComponent {
   messaggio : string = '';
 
   constructor(private bs: BibliotecaService) {}
-  ngOnInit() {}
 
   newDocument() {
     //inizializzazione variabili 

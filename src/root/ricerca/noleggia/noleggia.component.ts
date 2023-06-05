@@ -1,7 +1,7 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BibliotecaService } from '../../biblioteca.service';
-import { ajax, AjaxResponse } from 'rxjs/ajax';
+import { AjaxResponse } from 'rxjs/ajax';
 import { Documento } from '../../documento';
 import { Libreria } from '../../libreria';
 
@@ -30,11 +30,10 @@ export class NoleggiaComponent {
 
   // prendo in input da ricerca la variabile libro selezionato
   @Input() libro_selezionato: Documento = new Documento('', '', '', '');
-  // mando fuori un evento che comunica un array di documenti (libreria_update) e un messaggio
+  // mando  un evento che comunica un array di documenti (libreria_update) e un messaggio
   @Output() onUpdate_borrow = new EventEmitter<{message:string,update:Documento[]}>();
   constructor(private bs: BibliotecaService) {}
   
-  ngOnInit() {}
 
   NoleggiaDocument() {
 

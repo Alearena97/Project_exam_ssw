@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BibliotecaService } from '../biblioteca.service';
-import { ajax, AjaxResponse } from 'rxjs/ajax';
+import { AjaxResponse } from 'rxjs/ajax';
 import { Documento } from '../documento';
 import { Libreria } from '../libreria';
 import { EliminaComponent} from './elimina/elimina.component'
@@ -31,7 +31,6 @@ export class RicercaComponent {
 
 
   constructor(private bs: BibliotecaService) {}
-  ngOnInit() {}
 
 
   //funzione per fare l'aggiornamento della view dopo una funzionalità con tipo "any" perchè contiene sia un array che una stringa
@@ -47,7 +46,6 @@ export class RicercaComponent {
   Research() {
     //inizializzazione variabili tramite input 
     var tit_aut: HTMLInputElement = document.getElementById("Titolo_Autore") as HTMLInputElement;
-    //var libreria : Libreria.archivio = []
     // controllo che se l'input è vuoto l'elenco libri venga svuotato per non mostrarli 
     if (tit_aut.value == "") {
       this.elenco_libri = [];
@@ -56,14 +54,13 @@ export class RicercaComponent {
     this.bs.getDocument().subscribe({
       next: (x: AjaxResponse<any>) => {
 
-     // console.log(tit_aut.value);
       //associo ad una variabile l'array di documenti scaricato e lo rendo una stringa di tipo JSON 
       var newArchive = JSON.parse(x.response)
 
       // creo la libreria filtrando l'array di documenti con l'input inserito nella stringa 
       var libreria: Libreria = new Libreria(newArchive)
       this.elenco_libri = libreria.archivio.filter((doc:Documento)  => (doc.titolo+doc.autore).toLowerCase().includes(tit_aut.value.toLocaleLowerCase()));
-      //console.log(this.elenco_libri);
+      
       // controllo che ci siano risultati
       if (this.elenco_libri.length == 0) {
       this.errore = 'Nessun risultato trovato.';

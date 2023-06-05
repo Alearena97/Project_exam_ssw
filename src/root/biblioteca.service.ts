@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { ajax, AjaxResponse } from 'rxjs/ajax';
 import { Documento } from './documento';
-import { Libreria } from './libreria';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +13,6 @@ export class BibliotecaService {
   myURL: string  =
     "https://eu-central-1.aws.data.mongodb-api.com/app/kvaas-giwjg/endpoint/";
 
-  constructor() { }
 
   getDocument(): Observable<AjaxResponse<any>> {
     return ajax({

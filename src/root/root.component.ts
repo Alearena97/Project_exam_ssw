@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AjaxResponse } from 'rxjs/ajax';
-import { Documento } from './documento';
 import { BibliotecaService } from './biblioteca.service';
 import { IntroduzioneComponent } from './introduzione/introduzione.component';
 import { RicercaComponent } from './ricerca/ricerca.component';
@@ -23,7 +21,6 @@ import { FooterComponent } from './footer/footer.component'
   standalone: true,
 })
 export class RootComponent implements OnInit {
-  constructor() {}
 
   buttonIns: boolean = false;
   openIns() {
